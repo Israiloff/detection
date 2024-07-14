@@ -1,10 +1,18 @@
 from ultralytics import YOLO
 import cv2
 import math 
+
 # start webcam
+HIGH_VALUE = 10000
+WIDTH = HIGH_VALUE
+HEIGHT = HIGH_VALUE
+
 cap = cv2.VideoCapture(0)
-cap.set(3, 640)
-cap.set(4, 480)
+fourcc = cv2.VideoWriter_fourcc(*'XVID')
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, WIDTH)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, HEIGHT)
+width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
 
 # model
 model = YOLO("yolo-Weights/yolov8n.pt")
